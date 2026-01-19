@@ -1,5 +1,6 @@
 # nasdaq100-macroeconomic-ml
-Machine learning project predicting NASDAQ-100 returns using macroeconomic indicators
+## Project summary
+Machine learning pipeline using top NASDAQ-100 constituents and macroeconomic indicators (FRED) to model and predict next-day NASDAQ-100 returns by using XGBoost.
 
 
 ## How to run
