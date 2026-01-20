@@ -422,23 +422,24 @@ y_test = y.iloc[split_index:]
 
 xgb_reg = xgb.XGBRegressor(
     objective='reg:squarederror',
-    n_estimators=1000,
+    n_estimators=300,
     learning_rate=0.01,
     max_depth=3,
     subsample=0.8,
     colsample_bytree=0.8,
     reg_alpha=0.1,
     reg_lambda=1.0,
-    random_state=42
+    random_state=42,
+    eval_metric='rmse'
 )
 
 # Early stopping (kept as original; should work on modern xgboost in Actions)
 xgb_reg.fit(
     X_train, y_train,
     eval_set=[(X_test, y_test)],
-    eval_metric='rmse',
     verbose=True
 )
+
 
 y_pred = xgb_reg.predict(X_test)
 
@@ -548,7 +549,7 @@ y_test_cls = y_cls.iloc[split_index_cls:]
 
 xgb_clf = XGBClassifier(
     objective='binary:logistic',
-    n_estimators=1000,
+    n_estimators=300,
     learning_rate=0.01,
     max_depth=3,
     subsample=0.8,
@@ -556,15 +557,17 @@ xgb_clf = XGBClassifier(
     reg_alpha=0.1,
     reg_lambda=1.0,
     use_label_encoder=False,
-    eval_metric='logloss',
-    random_state=42
+    random_state=42,
+    eval_metric='logloss'
 )
+
 
 xgb_clf.fit(
     X_train_cls, y_train_cls,
     eval_set=[(X_test_cls, y_test_cls)],
     verbose=True
 )
+
 
 y_pred_cls = xgb_clf.predict(X_test_cls)
 
