@@ -436,7 +436,6 @@ xgb_reg = xgb.XGBRegressor(
 xgb_reg.fit(
     X_train, y_train,
     eval_set=[(X_test, y_test)],
-    early_stopping_rounds=40,
     eval_metric='rmse',
     verbose=True
 )
@@ -564,7 +563,6 @@ xgb_clf = XGBClassifier(
 xgb_clf.fit(
     X_train_cls, y_train_cls,
     eval_set=[(X_test_cls, y_test_cls)],
-    early_stopping_rounds=40,
     verbose=True
 )
 
