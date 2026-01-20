@@ -422,7 +422,7 @@ y_test = y.iloc[split_index:]
 
 xgb_reg = xgb.XGBRegressor(
     objective='reg:squarederror',
-    n_estimators=300,
+    n_estimators=1000,
     learning_rate=0.01,
     max_depth=3,
     subsample=0.8,
@@ -549,7 +549,7 @@ y_test_cls = y_cls.iloc[split_index_cls:]
 
 xgb_clf = XGBClassifier(
     objective='binary:logistic',
-    n_estimators=300,
+    n_estimators=1000,
     learning_rate=0.01,
     max_depth=3,
     subsample=0.8,
